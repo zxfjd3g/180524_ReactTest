@@ -6,7 +6,13 @@
 </head>
 <body>
   <h2>前端JS框架列表</h2>
-  <div id="example1"></div>
+  <div id="example1">
+    <!--<ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>-->
+  </div>
 
   <script type="text/javascript" src="../js/react.development.js"></script>
   <script type="text/javascript" src="../js/react-dom.development.js"></script>
@@ -15,7 +21,20 @@
   <script type="text/babel">
     /*
      功能: 动态展示列表数据
+     根据数据的数组生成一个标签的数组: arr.map((item, index) => <li key={index}>{item}</li>)
      */
+    // 数据的数组
+    const names = ['jquery', 'zepto', 'react', 'vue', 'webpack']
+
+    const vDom = (
+      <ul>
+        {
+          names.map((name, index) => <li key={index}>{name}</li>)
+        }
+      </ul>
+    )
+
+    ReactDOM.render(vDom, document.getElementById('example1'))
   </script>
 </body>
 </html>

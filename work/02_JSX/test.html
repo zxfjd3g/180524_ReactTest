@@ -5,8 +5,32 @@
   <title>02_JSX</title>
 </head>
 <body>
-  <div id="test1"></div>
-  <div id="test2"></div>
+<div id="test1"></div>
+<div id="test2"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript">
+  // 1. 创建虚拟DOM对象
+  const vDom = React.createElement('h2', {'id': 'myId'}, 'I like you!')
+  // 2. 渲染虚拟DOM
+  ReactDOM.render(vDom, document.getElementById('test1'))
+
+</script>
+
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+  // 1. 创建虚拟DOM对象
+  var id = 'abc'
+  var text = 'I like You too!'
+  const vDom2 = <h2 id={id}>{text}</h2>
+  console.log(vDom2)
+
+  // 2. 渲染虚拟DOM
+  ReactDOM.render(vDom2, document.getElementById('test2'))
+</script>
+
+
 
 </body>
 </html>
