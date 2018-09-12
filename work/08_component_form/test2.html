@@ -20,19 +20,39 @@
 
   class Form extends React.Component {
 
+    state = {
+      username: '',
+      pwd: ''
+    }
+
     login = (event) => {
       // 阻止事件的默认行为
       event.preventDefault()
-
-      const username = this.refs.username.value
-      const pwd = this.refs.pwd.value
+      const {username, pwd} = this.state
       alert('提交用户信息--'+username +'---'+pwd)
     }
+
+    setUsername = (event) => {
+      const username = event.target.value
+      // 更新状态数据username
+      this.setState({
+        username
+      })
+    }
+
+    setPwd = (event) => {
+      const pwd = event.target.value
+      // 更新状态数据username
+      this.setState({
+        pwd
+      })
+    }
+
     render () {
       return (
         <form action='/xxx' method="post">
-          用户名: <input type="text" ref='username'/>
-          密码: <input type="password" ref='pwd'/>
+          用户名: <input type="text" onChange={this.setUsername}/>
+          密码: <input type="password" onChange={this.setPwd}/>
           <input type="submit" value='登陆' onClick={this.login}/>
         </form>
       )

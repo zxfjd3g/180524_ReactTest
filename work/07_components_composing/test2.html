@@ -34,14 +34,13 @@
     // 应用根组件
     class App extends React.Component {
 
-      constructor (props) {
-        super(props)
-
-        // 初始化状态
-        this.state = {
-          todos: ['吃饭', '睡觉', 'coding', '发呆']
-        }
+      // 给组件对象(App的一个实例)指定state属性
+      state = {
+        todos: ['吃饭', '睡觉', 'coding', '发呆']
       }
+
+      // 给组件类对象(App)添加state2属性
+      static state2 = 'abc'
 
       addTodo = (todo) => { // 更新状态的行为
         // 得到当前状态数据
@@ -69,6 +68,10 @@
     // Todo添加组件
     class TodoAdd extends React.Component {
 
+      static propTypes = {
+        size: PropTypes.number.isRequired,
+        addTodo: PropTypes.func.isRequired
+      }
 
       add = () => {
         // 得到输入的数据
@@ -93,13 +96,13 @@
         )
       }
     }
-    TodoAdd.propTypes = {
-      size: PropTypes.number.isRequired,
-      addTodo: PropTypes.func.isRequired
-    }
 
     // Todo的列表组件
     class TodoList extends React.Component {
+
+      static propTypes = { // 对接收的属性进行声明
+        todos: PropTypes.array.isRequired
+      }
 
       render () {
         // 读取接收的props数据
@@ -113,9 +116,6 @@
           </ul>
         )
       }
-    }
-    TodoList.propTypes = { // 对接收的属性进行声明
-      todos: PropTypes.array.isRequired
     }
 
     // 渲染App组件标签

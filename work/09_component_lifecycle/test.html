@@ -17,6 +17,36 @@
     2. 切换时间为2S
     3. 点击按钮从界面中移除组件界面
    */
+
+  class Animation extends React.Component {
+
+    state = {
+      opacity: 1
+    }
+
+    render () {
+      const {opacity} = this.state
+      return (
+        <div>
+          <h2 style={{opacity}}>react学不会, 怎么办?</h2>
+          <button>不活了</button>
+        </div>
+      )
+    }
+  }
+
+  setInterval(() => {
+    let {opacity} = this.state
+    opacity -= 0.1
+    if(opacity<=0) {
+      opacity = 1
+    }
+    this.setState({opacity})
+  }, 200)
+
+
+
+  ReactDOM.render(<Animation/>, document.getElementById('example'))
 </script>
 </body>
 </html>
