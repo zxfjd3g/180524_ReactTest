@@ -18,11 +18,8 @@
   */
 
   class HelloWorld extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-          date: new Date()
-      }
+    state = {
+      date: new Date()
     }
 
     componentDidMount () {
@@ -38,6 +35,7 @@
       return (
         <p>
           Hello, <input type="text" placeholder="Your name here"/>!&nbsp;
+          <span>It is {this.state.date.toTimeString()}</span>
           <span>It is {this.state.date.toTimeString()}</span>
         </p>
       )

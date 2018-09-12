@@ -24,9 +24,19 @@
       opacity: 1
     }
 
+    constructor (props) {
+      super(props)
+      console.log('constructor()')
+    }
+
+    componentWillMount () {
+      console.log('componentWillMount()')
+    }
+
 
     // 在第一次render()初始显示之后
     componentDidMount() {
+      console.log('componentDidMount()')
       // 启动定时器(启动一个异步任务)
       this.intervalId = setInterval(() => {
         console.log('--------')
@@ -41,8 +51,18 @@
       }, 200)
     }
 
+
+    componentWillUpdate () {
+      console.log('componentWillUpdate()')
+    }
+    
+    componentDidUpdate () {
+      console.log('componentDidUpdate()')
+    }
+
     // 在组件对象死亡之前回调
     componentWillUnmount () {
+      console.log('componentWillUnmount()')
       // 做一些收尾工作(清除定时器)
       clearInterval(this.intervalId)
     }
