@@ -8,8 +8,13 @@
 
 <div id="example1"></div>
 
+<hr>
+
+<div id="example2"></div>
+
 <script type="text/javascript" src="../js/react.development.js"></script>
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
 <script type="text/javascript" src="../js/babel.min.js"></script>
 
 <script type="text/babel">
@@ -20,6 +25,64 @@
   2). 如果年龄没有指定, 默认为18
   */
 
+  class Person extends React.Component {
+
+    render() {
+      const {name, sex, age} = this.props
+      return (
+        <ul>
+          <li>姓名: {name}</li>
+          <li>性别: {sex}</li>
+          <li>年龄: {age}</li>
+        </ul>
+      )
+    }
+  }
+
+  // 给组件类添加propTypes属性
+  Person.propTypes = { // 指定属性名, 属性值的类型, 属性的必要性
+    name: PropTypes.string.isRequired,
+    sex: PropTypes.string,
+    age: PropTypes.number,
+  }
+
+  // 给组件类添加defaultProps属性
+  Person.defaultProps = { // 给属性指定默认值
+    sex: '男',
+    age: 18
+  }
+
+  const p = {
+    name: 'Tom',
+    sex: '男',
+    age: 12
+  }
+
+  // ReactDOM.render(<Person name={p.name} sex={p.sex} age={p.age}/>, document.getElementById('example1'))
+  ReactDOM.render(<Person sex={p.sex} age={p.age+''}/>, document.getElementById('example1'))
+
+  const p2 = {
+    name: 'Marry',
+    sex: '女',
+    age: 20
+  }
+  // ReactDOM.render(<Person name={p2.name}/>, document.getElementById('example2'))
+  // ReactDOM.render(<Person name={p2.name} sex={p2.sex} age={p2.age}/>, document.getElementById('example2'))
+  ReactDOM.render(<Person {...p2}/>, document.getElementById('example2'))
+
+
+  /*
+  ...的作用?
+    1. 打包: 将多个数据封装成一个容器(对象/数组)
+      function fn (...args) {} // args就是一个包含所有实参的数组
+      fn(1, 3)
+      fn(1, 4, 5)
+    2. 解包: 将一个容器中的多个数据拿出来
+      var arr1 = [1, 2, 3]
+      var arr2 = [5, ...arr1 ,6]  // 拆解数组
+
+      <Person {...p2}/>  // 拆解对象
+   */
 </script>
 </body>
 </html>

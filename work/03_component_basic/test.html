@@ -30,7 +30,7 @@
     class MyComponent2 extends React.Component {
       // 重写render方法
       render () {
-        console.log('render()', this instanceof MyComponent2) // this是MyComponent2的实例
+        console.log('render()', this) // this是MyComponent2的实例
         return <h2>ES6类组件(复杂组件)</h2>
       }
     }
