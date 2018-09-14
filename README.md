@@ -112,9 +112,9 @@
 	作用: 找到组件内部的真实dom元素对象, 进而操作它
 
 ## 2.3. 组件中的事件处理
-	1. 给标签添加属性: onXxx={this.eventHandler()}
+	1. 给标签添加属性: onXxx={this.eventHandler}
 	2. 在组件中添加事件处理方法
-	    eventHandler(event) {
+	    eventHandler = (event) => {
 	                
 	    }
 	3. 使自定义方法中的this为组件对象
@@ -200,4 +200,4 @@
 	// 声明式编程是建立命令式编程的基础上
 	
 	// 数组中常见声明式方法
-		map() / forEach() / find() / findIndex()
+		map() / forEach() / filter() / find() / findIndex() / reduce()
